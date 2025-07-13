@@ -1,0 +1,15 @@
+name: 'telegram_dbt'
+version: '1.0'
+config-version: 2
+
+profile: 'telegram_dbt'
+
+model-paths: ['models']
+analysis-paths: ['analysis']
+test-paths: ['tests']
+macro-paths: ['macros']
+seed-paths: ['seeds']
+snapshot-paths: ['snapshots']
+
+target-path: 'target'
+clean-targets: ['target', 'dbt_modules']
