@@ -1,2 +1,54 @@
-data/
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+*.log
+*.sqlite3
+*.db
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Environment
 .env
+.env.*
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# Docker
+*.pid
+*.tar
+*.bak
+docker-compose.override.yml
+
+# VSCode settings
+.vscode/
+
+# dbt artifacts
+dbt_modules/
+target/
+dbt_packages/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Data lake
+data/raw/
+data/interim/
+data/temp/
+
+# Image cache
+*.jpg
+*.png
+*.jpeg
+*.bmp
+*.gif 
