@@ -12,106 +12,106 @@ This project implements a robust, scalable data pipeline to collect, process, en
 **Orchestrate**: Schedule and monitor the pipeline using Dagster.
 
 ## Project Structure
-project_root/
-├── .gitignore                      # Excludes sensitive files (.env, data/raw/, logs/, *.jpg, *.png)
-├── requirements.txt                # Python dependencies
-├── Dockerfile                      # Docker configuration for the application
-├── docker-compose.yml              # Orchestrates app and database services
-├── .env                            # Environment variables (not tracked in Git)
-├── src/                            # Source code
-│   ├── api/                        # FastAPI application 
-│   │   ├── main.py                 # FastAPI app and endpoints
-│   │   ├── database.py             # SQLAlchemy database connection
-│   │   ├── models.py               # SQLAlchemy models
-│   │   ├── schemas.py              # Pydantic schemas
-│   │   ├── crud.py                 # Query logic for endpoints
-│   ├── pipeline.py                 # Dagster pipeline definition 
-│   ├── config.py                   # Environment variable loading
-│   ├── scraper.py                  # Telegram data scraping 
-│   ├── load_raw_data.py            # Raw data loading to PostgreSQL 
-│   ├── object_detection.py          # YOLOv8 object detection 
+project_root/ <br>
+├── .gitignore                      # Excludes sensitive files (.env, data/raw/, logs/, <br> *.jpg, *.png) <br>
+├── requirements.txt                # Python dependencies <br>
+├── Dockerfile                      # Docker configuration for the application <br>
+├── docker-compose.yml              # Orchestrates app and database services <br>
+├── .env                            # Environment variables (not tracked in Git) <br>
+├── src/                            # Source code <br>
+│   ├── api/                        # FastAPI application  <br>
+│   │   ├── main.py                 # FastAPI app and endpoints <br>
+│   │   ├── database.py             # SQLAlchemy database connection <br>
+│   │   ├── models.py               # SQLAlchemy models <br>
+│   │   ├── schemas.py              # Pydantic schemas <br>
+│   │   ├── crud.py                 # Query logic for endpoints <br>
+│   ├── pipeline.py                 # Dagster pipeline definition  <br>
+│   ├── config.py                   # Environment variable loading <br>
+│   ├── scraper.py                  # Telegram data scraping  <br>
+│   ├── load_raw_data.py            # Raw data loading to PostgreSQL  <br>
+│   ├── object_detection.py          # YOLOv8 object detection  <br>
 │   └── __init__.py
-├── data/                           # Data lake
+├── data/                           # Data lake <br>
 │   ├── raw/
-│   │   ├── telegram_messages/      # Partitioned JSON message files
-│   │   │   ├── YYYY-MM-DD/
-│   │   │   │   ├── lobelia4cosmetics.json
-│   │   │   │   ├── tikvahpharma.json
-│   │   ├── telegram_media/         # Partitioned image files
-│   │   │   ├── YYYY-MM-DD/
-│   │   │   │   ├── lobelia4cosmetics/
-│   │   │   │   │   ├── message_id.jpg
-│   │   │   │   ├── tikvahpharma/
-│   │   │   │   │   ├── message_id.jpg
-├── telegram_etl/                   # dbt project 
-│   ├── dbt_project.yml
-│   ├── profiles.yml
-│   ├── models/
-│   │   ├── stg_telegram_messages.sql
-│   │   ├── dim_channels.sql
-│   │   ├── dim_dates.sql
-│   │   ├── fct_messages.sql
-│   │   ├── fct_image_detections.sql
-│   ├── tests/
-│   ├── target/
-│   ├── dbt_packages/
-│   ├── logs/
-│   │   ├── dbt.log
-├── scraping.log                    # Scraping logs 
-├── object_detection.log            # Object detection logs
+│   │   ├── telegram_messages/      # Partitioned JSON message files <br>
+│   │   │   ├── YYYY-MM-DD/ <br>
+│   │   │   │   ├── lobelia4cosmetics.json <br>
+│   │   │   │   ├── tikvahpharma.json <br>
+│   │   ├── telegram_media/         # Partitioned image files <br>
+│   │   │   ├── YYYY-MM-DD/ <br>
+│   │   │   │   ├── lobelia4cosmetics/ <br>
+│   │   │   │   │   ├── message_id.jpg <br>
+│   │   │   │   ├── tikvahpharma/ <br>
+│   │   │   │   │   ├── message_id.jpg <br>
+├── telegram_etl/                   # dbt project  <br>
+│   ├── dbt_project.yml <br>
+│   ├── profiles.yml <br>
+│   ├── models/ <br>
+│   │   ├── stg_telegram_messages.sql <br>
+│   │   ├── dim_channels.sql <br>
+│   │   ├── dim_dates.sql <br>
+│   │   ├── fct_messages.sql <br>
+│   │   ├── fct_image_detections.sql <br>
+│   ├── tests/ <br>
+│   ├── target/ <br>
+│   ├── dbt_packages/ <br>
+│   ├── logs/ <br>
+│   │   ├── dbt.log <br>
+├── scraping.log                    # Scraping logs  <br>
+├── object_detection.log            # Object detection logs <br>
 
 ## Prerequisites
 
-Docker: For containerization.
-Docker Compose: For orchestrating services.
-Python 3.11: For local development (optional).
-Telegram API Credentials: Obtain API_ID and API_HASH from my.telegram.org.
-PostgreSQL: Managed via Docker (no local installation required).
+Docker: For containerization. <br>
+Docker Compose: For orchestrating services. <br>
+Python 3.11: For local development (optional). <br>
+Telegram API Credentials: Obtain API_ID and API_HASH from my.telegram.org. <br>
+PostgreSQL: Managed via Docker (no local installation required). <br>
 
 ## Setup Instructions
 
-Clone the Repository:
-git clone <repository-url>
-cd <repository-directory>
+Clone the Repository: <br>
+git clone <repository-url> <br>
+cd <repository-directory> <br>
 
 
-Create .env File:Create a .env file in the project root with the following variables:
-DB_USER=your_postgres_user
-DB_PASSWORD=your_postgres_password
-DB_NAME=telegram_db
-DB_HOST=db
-DB_PORT=5432
-API_ID=your_telegram_api_id
-API_HASH=your_telegram_api_hash
+Create .env File:Create a .env file in the project root with the following variables: <br>
+DB_USER=your_postgres_user <br>
+DB_PASSWORD=your_postgres_password <br>
+DB_NAME=telegram_db <br>
+DB_HOST=db <br>
+DB_PORT=5432 <br>
+API_ID=your_telegram_api_id <br>
+API_HASH=your_telegram_api_hash <br>
 
 
-Install Dependencies:Dependencies are listed in requirements.txt:
-python-dotenv==1.0.1
-psycopg2-binary==2.9.9
-telethon==1.40.0
-dbt-core==1.4.1
-dbt-postgres==1.4.1
-ultralytics==8.3.4
-fastapi==0.115.2
-uvicorn==0.32.0
-sqlalchemy==2.0.36
-dagster==1.8.7
-dagster-webserver==1.8.7
+Install Dependencies:Dependencies are listed in requirements.txt: <br>
+python-dotenv==1.0.1 <br>
+psycopg2-binary==2.9.9 <br>
+telethon==1.40.0 <br>
+dbt-core==1.4.1 <br>
+dbt-postgres==1.4.1 <br>
+ultralytics==8.3.4 <br>
+fastapi==0.115.2 <br>
+uvicorn==0.32.0 <br>
+sqlalchemy==2.0.36 <br>
+dagster==1.8.7 <br>
+dagster-webserver==1.8.7 <br>
 
 
-Build and Run Docker Containers:
-docker-compose build
-docker-compose up -d
+Build and Run Docker Containers: <br>
+docker-compose build <br>
+docker-compose up -d <br>
 
 
-Run dbt Models (if needed):
-docker-compose exec app dbt run --project-dir telegram_etl
+Run dbt Models (if needed): <br>
+docker-compose exec app dbt run --project-dir telegram_etl <br>
 
 
-Access Services:
+Access Services: <br>
 
-Dagster UI: http://localhost:3000 (Task 5)
-FastAPI: http://localhost:8000 
+Dagster UI: http://localhost:3000 (Task 5) <br>
+FastAPI: http://localhost:8000  <br>
 
 
 
@@ -130,13 +130,13 @@ Logs: Outputs to scraping.log.
 
 ### Data Modeling and Transformation
 
-Directory: telegram_etl/
-Functionality: Uses dbt to transform raw data into a star schema:
-Staging: stg_telegram_messages.sql cleans raw_telegram_messages.
-Data Mart:
-fct_messages.sql: Fact table with message_id, channel_name, message_timestamp, message_length, has_image, message_date_key.
-dim_channels.sql: Dimension table with unique channel names.
-dim_dates.sql: Dimension table with date attributes (day, month, year, quarter, day_name).
+Directory: telegram_etl/ <br>
+Functionality: Uses dbt to transform raw data into a star schema: <br>
+Staging: stg_telegram_messages.sql cleans raw_telegram_messages. <br>
+Data Mart: <br>
+fct_messages.sql: Fact table with message_id, channel_name, message_timestamp,  <br>message_length, has_image, message_date_key. <br>
+dim_channels.sql: Dimension table with unique channel names. <br>
+dim_dates.sql: Dimension table with date attributes (day, month, year, quarter, day_name). <br>
 
 
 Tests: Ensures message_id and channel_name are unique and not null.
@@ -152,26 +152,26 @@ Logs: Outputs to object_detection.log.
 
 ### Analytical API with FastAPI
 
-Directory: src/api/
-Endpoints:
-GET /api/reports/top-products?limit=10: Returns top detected objects (products).
-GET /api/channels/{channel_name}/activity: Returns daily message counts for a channel.
-GET /api/search/messages?query=paracetamol: Searches messages by keyword.
+Directory: src/api/ <br>
+Endpoints: <br>
+GET /api/reports/top-products?limit=10: Returns top detected objects (products). <br>
+GET /api/channels/{channel_name}/activity: Returns daily message counts for a channel. <br>
+GET /api/search/messages?query=paracetamol: Searches messages by keyword. <br>
 
 
-Access: http://localhost:8000/docs for Swagger UI.
-Validation: Uses Pydantic schemas for response structure.
+Access: http://localhost:8000/docs for Swagger UI. <br>
+Validation: Uses Pydantic schemas for response structure. <br>
 
 ### Pipeline Orchestration with Dagster
 
-Script: src/pipeline.py
-Functionality: Defines a Dagster job (telegram_pipeline) with ops:
-scrape_telegram_data_op: Runs scraper.py.
-load_raw_to_postgres_op: Runs load_raw_data.py.
-run_dbt_transformations_op: Runs dbt run.
-run_yolo_enrichment_op: Runs object_detection.py.
+Script: src/pipeline.py <br>
+Functionality: Defines a Dagster job (telegram_pipeline) with ops: <br>
+scrape_telegram_data_op: Runs scraper.py. <br>
+load_raw_to_postgres_op: Runs load_raw_data.py. <br>
+run_dbt_transformations_op: Runs dbt run. <br>
+run_yolo_enrichment_op: Runs object_detection.py. <br>
 
 
-Schedule: Runs daily at midnight (0 0 * * *).
-UI: Monitor at http://localhost:3000.
+Schedule: Runs daily at midnight (0 0 * * *). <br>
+UI: Monitor at http://localhost:3000. <br>
 
