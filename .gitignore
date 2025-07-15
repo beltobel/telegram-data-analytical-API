@@ -53,9 +53,3 @@ data/temp/
 *.bmp
 *.gif 
 
-
-telegram_dbt/models/staging/stg_telegram_messages.sql
-
-telegram_dbt/models/marts/dim_channels.sql
-telegram_dbt/models/marts/dim_dates.sql
-telegram_dbt/models/marts/fct_messages.sql

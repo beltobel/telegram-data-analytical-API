@@ -5,4 +5,9 @@ pillow
 dbt-core
 dbt-postgres
 psycopg2-binary
-python-dotenv
+ultralytics
+fastapi
+uvicorn
+sqlalchemy
+dagster
+dagster-webserver
