@@ -16,5 +16,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy codebase
 COPY . .
 
+
 CMD ["python", "scraper/scrape.py", "dagster", "dev", "-h", "0.0.0.0", "-p", "3000"]
 

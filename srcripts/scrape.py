@@ -5,7 +5,7 @@ from telethon.sync import TelegramClient
 from telethon.tl.types import MessageMediaPhoto
 from telethon.errors import SessionPasswordNeededError
 from dotenv import load_dotenv
-from scripts.utils import save_json, download_image, log_message
+from utils import save_json, download_image, log_message
 
 # Load credentials from .env
 load_dotenv()
@@ -49,7 +49,7 @@ def scrape_channel(client, channel):
 
     messages = []
 
-    for message in client.iter_messages(channel, limit=100):  # Adjust limit as needed
+    for message in client.iter_messages(channel, limit=100):  # we limit as needed
         msg_dict = message.to_dict()
 
         if message.media and isinstance(message.media, MessageMediaPhoto):
@@ -70,6 +70,7 @@ def main():
             log_message(f"Error scraping {channel}: {str(e)}")
 
     client.disconnect()
+    
 
 if __name__ == "__main__":
     main()
