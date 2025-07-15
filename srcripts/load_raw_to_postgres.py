@@ -59,7 +59,15 @@ def load_all_files():
     for file_path in glob("data/raw/telegram_messages/*/*.json"):
         channel = os.path.splitext(os.path.basename(file_path))[0]
         with open(file_path, "r", encoding="utf-8") as f:
-            messages = json.load(f)
+            content = f.read().strip()
+            if not content:
+                print(f"Warning: {file_path} is empty.")
+                continue
+            try:
+                messages = json.loads(content)
+            except json.JSONDecodeError as e:
+                print(f"Error decoding JSON in {file_path}: {e}")
+                continue
             insert_messages(cur, messages, channel)
             print(f"Loaded {len(messages)} from {channel}")
 
